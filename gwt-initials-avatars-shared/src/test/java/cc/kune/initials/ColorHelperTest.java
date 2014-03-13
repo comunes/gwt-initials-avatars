@@ -30,18 +30,24 @@ import org.junit.Test;
 
 public class ColorHelperTest {
 
-  private String oneColor;
+  private static final String TEST_STRING = "test";
+  private static final String TEST2_STRING = "abcd";
+  private static final String TEST3_STRING = "hi";
+  private String another;
   private String anotherColor;
+  private String oneColor;
 
   @Before
   public void before() {
-    oneColor = ColorHelper.getRandomClearColor();
-    anotherColor = ColorHelper.getRandomClearColor();
+    oneColor = ColorHelper.getRandomClearColor(TEST_STRING);
+    anotherColor = ColorHelper.getRandomClearColor(TEST2_STRING);
+    another = ColorHelper.getRandomClearColor(TEST3_STRING);
   }
 
   @Test
   public void shouldGenerateRandomColors() {
     assertFalse(oneColor.equals(anotherColor));
+    assertFalse(oneColor.equals(another));
   }
 
   @Test

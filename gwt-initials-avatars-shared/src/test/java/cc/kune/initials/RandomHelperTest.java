@@ -23,13 +23,20 @@
 
 package cc.kune.initials;
 
-public class InitialsConstants {
-  public final static float BIG_FONT_FACTOR = 4f / 5f;
-  public static final int CACHE_EXP_IN_SECS = 10 * 60;
-  public final static float MEDIUM_FONT_FACTOR = 5f / 6f;
-  public final static float SMALL_FONT_FACTOR = 5f / 6f;
+import static org.junit.Assert.assertEquals;
 
-  public InitialsConstants() {
+import org.junit.Test;
 
+public class RandomHelperTest {
+
+  private static final String SOME_ADDRESS = "exammple@example.com";
+
+  @Test
+  public void sameSeedSameRandom() {
+    RandomHelper.setSeed(SOME_ADDRESS, 1);
+    final int random1 = RandomHelper.getRandomInt(0, 255);
+    RandomHelper.setSeed(SOME_ADDRESS, 1);
+    final int random2 = RandomHelper.getRandomInt(0, 255);
+    assertEquals(random1, random2);
   }
 }

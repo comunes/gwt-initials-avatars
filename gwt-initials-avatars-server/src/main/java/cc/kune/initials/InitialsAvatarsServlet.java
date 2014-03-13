@@ -47,14 +47,11 @@ import com.google.common.cache.LoadingCache;
 
 public class InitialsAvatarsServlet extends HttpServlet {
 
-  private static final int CACHE_EXP_IN_SECS = 1 * 60;
-
   private static final int MAX_IMG_SIZE = 1000;
 
   // http://txt2re.com/index-java.php3?s=111x111/aba_12ca&5&-19&6&-28&2
-  private static final Pattern PARAMS = Pattern.compile(
-      "(\\d+)" + "(x)" + "(\\d+)" + "(\\/)" + "(\\w+)", Pattern.CASE_INSENSITIVE | Pattern.DOTALL
-          | Pattern.UNICODE_CHARACTER_CLASS);
+  private static final Pattern PARAMS = Pattern.compile("(\\d+)" + "(x)" + "(\\d+)" + "(\\/)"
+      + "([\\w@\\.\\-]+)", Pattern.CASE_INSENSITIVE | Pattern.DOTALL | Pattern.UNICODE_CHARACTER_CLASS);
 
   private static final long serialVersionUID = 3757314092763168153L;
 
@@ -64,12 +61,11 @@ public class InitialsAvatarsServlet extends HttpServlet {
     // We'll cache the color of some user for some minutes (wo in a document, it
     // should show the same color)
     // https://code.google.com/p/guava-libraries/wiki/CachesExplained
-    colorsCache = CacheBuilder.newBuilder().maximumSize(500).expireAfterAccess(CACHE_EXP_IN_SECS,
-        TimeUnit.SECONDS).build(new CacheLoader<String, Color>() {
+    colorsCache = CacheBuilder.newBuilder().maximumSize(500).expireAfterAccess(
+        InitialsConstants.CACHE_EXP_IN_SECS, TimeUnit.SECONDS).build(new CacheLoader<String, Color>() {
       @Override
       public Color load(final String key) {
-        return new Color(ColorHelper.getRandomInt(), ColorHelper.getRandomInt(),
-            ColorHelper.getRandomInt());
+        return new Color(ColorHelper.getRandomClearColorInt(key));
       }
     });
   }

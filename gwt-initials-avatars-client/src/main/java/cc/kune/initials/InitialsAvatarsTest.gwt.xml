@@ -3,6 +3,10 @@
   <inherits name="com.google.gwt.user.User" />
   <inherits name="com.google.gwt.user.theme.clean.Clean" />
 
+  <inherits name="com.google.common.base.Base"/>
+  <inherits name="com.google.common.cache.Cache"/>
+  <inherits name="com.google.common.util.concurrent.Concurrent"/>
+
   <source path="" />
 
   <add-linker name="xsiframe" />

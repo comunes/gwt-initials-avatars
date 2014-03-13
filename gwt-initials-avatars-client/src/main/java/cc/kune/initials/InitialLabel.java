@@ -31,12 +31,15 @@ import com.google.gwt.user.client.ui.Label;
 
 public class InitialLabel extends Label {
 
+  private final String name;
+
   public InitialLabel(final String text) {
     this(text, Direction.DEFAULT);
   }
 
   public InitialLabel(final String name, final Direction direction) {
     super();
+    this.name = name;
     final InitialsCss css = InitialsResources.INS.css();
     addStyleName(css.def());
     final int len = name.length();
@@ -45,7 +48,7 @@ public class InitialLabel extends Label {
 
   public void setStyle(final int height, final int fontSize) {
     final Style style = getElement().getStyle();
-    style.setBackgroundColor(ColorHelper.getRandomClearColor());
+    style.setBackgroundColor(AvatarCompositeFactory.getColorProvider().getColor(name));
     style.setLineHeight(height, Unit.PX);
     style.setFontSize(fontSize, Unit.PX);
   }

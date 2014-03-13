@@ -9,7 +9,7 @@
   </parent>
 
   <artifactId>gwt-initials-avatars-client</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
 
   <prerequisites>
     <maven>${mavenVersion}</maven>
@@ -39,10 +39,29 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava-gwt</artifactId>
+      <version>15.0</version>
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven-jar-plugin</artifactId>
+         <version>2.4</version>
+         <executions>
+            <execution>
+               <id>make-a-jar</id>
+               <phase>compile</phase>
+               <goals>
+                  <goal>jar</goal>
+               </goals>
+            </execution>
+         </executions>
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>gwt-maven-plugin</artifactId>

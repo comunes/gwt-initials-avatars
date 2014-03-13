@@ -30,13 +30,14 @@ package cc.kune.initials;
 public class ColorHelper {
 
   /** The MAX color constant. */
-  private static final int MAX = 200;
+  public static final int MAX = 200;
 
   /** The MIN color constant. */
-  private static final int MIN = 60;
+  public static final int MIN = 60;
 
   /**
-   * Gets a random clear color suitable for use in placeholder avatars
+   * Gets a random clear color suitable for use in placeholder avatars, using a
+   * string (and the current hour) as seed
    * 
    * Inspired in <a href=
    * "https://github.com/lmoffereins/initials-default-avatar/blob/master/initials-default-avatar.php"
@@ -44,16 +45,45 @@ public class ColorHelper {
    * 
    * @return the random
    */
-  public static String getRandomClearColor() {
+  public static String getRandomClearColor(final String seedString) {
     // This should return a random but clear color for an initial avatar
-    final int red = getRandomInt();
-    final int blue = getRandomInt();
-    final int green = getRandomInt();
-    return rgbToHex(red, blue, green);
+    final int red = getRandomInt(seedString, -1);
+    final int green = getRandomInt(seedString, 5);
+    final int blue = getRandomInt(seedString, 2);
+    return rgbToHex(red, green, blue);
   }
 
-  public static int getRandomInt() {
-    return RandomHelper.getInt(MIN, MAX);
+  /**
+   * Gets a random clear color suitable for use in placeholder avatars, using a
+   * string (and the current hour) as seed
+   * 
+   * Inspired in <a href=
+   * "https://github.com/lmoffereins/initials-default-avatar/blob/master/initials-default-avatar.php"
+   * >this</a>.
+   * 
+   * @return the random
+   */
+  public static int getRandomClearColorInt(final String seedString) {
+    final int red = getRandomInt(seedString, -1);
+    final int green = getRandomInt(seedString, 5);
+    final int blue = getRandomInt(seedString, 2);
+    // http://stackoverflow.com/questions/4801366/convert-rgb-values-into-integer-pixel
+    final int rgb = ((red & 0x0ff) << 16) | ((green & 0x0ff) << 8) | (blue & 0x0ff);
+    return rgb;
+  }
+
+  /**
+   * Gets the random int using the current date (without minutes) and a string
+   * as seed. This should allow to generate the same random values in client and
+   * server side.
+   * 
+   * @param name
+   *          the string seed
+   * @return the random int generated from the seed
+   */
+  private static int getRandomInt(final String seedString, final int seed) {
+    RandomHelper.setSeed(seedString, seed);
+    return RandomHelper.getRandomInt(MIN, MAX);
   }
 
   /**

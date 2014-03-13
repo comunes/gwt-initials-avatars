@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to="initials">
   <inherits name="com.google.gwt.user.User" />
+
+  <inherits name="com.google.common.base.Base"/>
+  <inherits name="com.google.common.cache.Cache"/>
+  <inherits name="com.google.common.util.concurrent.Concurrent"/>
+
   <source path="" />
 </module>

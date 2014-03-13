@@ -74,7 +74,7 @@ public class AvatarComposite extends Composite {
       return build(Arrays.asList(widgets));
     }
 
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public AvatarComposite build(final List<IsWidget> widgets) {
       final List list = InitialsHelper.getFour(widgets);
       return new AvatarComposite(this, avatarSizes[list.size() - 1], fontSizes[list.size() - 1], list);

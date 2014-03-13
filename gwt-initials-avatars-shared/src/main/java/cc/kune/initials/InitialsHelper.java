@@ -58,12 +58,12 @@ public class InitialsHelper {
   /**
    * Gets the four elements, and gets randomly three maintaining the first.
    * 
-   * @param names
+   * @param objects
    *          the names
    * @return the four and swap
    */
-  public static List<?> getFourAndSwap(final List<?> names) {
-    return swap(names).subList(0, getMaxSize(names));
+  public static List<?> getFourAndSwap(final List<?> objects) {
+    return swap(objects).subList(0, getMaxSize(objects));
   }
 
   public static int getMaxSize(final List<?> list) {
