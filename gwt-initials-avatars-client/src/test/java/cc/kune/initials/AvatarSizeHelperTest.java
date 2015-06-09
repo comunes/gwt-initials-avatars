@@ -27,8 +27,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import cc.kune.initials.AvatarSizeHelper;
-
 public class AvatarSizeHelperTest {
 
   @Test

@@ -14,7 +14,7 @@ import com.google.gwt.user.client.ui.RootPanel;
  */
 public class InitialsAvatarsTest implements EntryPoint {
 
-  String[] NAMES = new String[] { "Simone", "Luther", "Bertrand", "Ada", "Martin", "吗 台湾", "واعتلاء" };
+  String[] NAMES = new String[] { "Simone", "Luther", "Bertrand", "Ada", "Martin", "吗台湾", "واعتلاء" };
 
   private void gen(final String string, final String string2, final String string3, final String string4) {
     RootPanel.get().add(
@@ -50,9 +50,9 @@ public class InitialsAvatarsTest implements EntryPoint {
 
     final Builder builder = new AvatarComposite.Builder(sizeFull, padding);
 
-    RootPanel.get().add(builder.build(new InitialLabel("luther")));
-    RootPanel.get().add(builder.build(new InitialLabel("blisset")));
-    RootPanel.get().add(builder.build(new InitialLabel("blisset")));
+    RootPanel.get().add(builder.build(genLabel("luther")));
+    RootPanel.get().add(builder.build(genLabel("blisset")));
+    RootPanel.get().add(builder.build(genLabel("吗台湾")));
     RootPanel.get().add(builder.build(genLabel(5), new Image(url2)));
     RootPanel.get().add(builder.build(genLabel(4), genLabel(3), genLabel(2)));
     RootPanel.get().add(builder.build(genLabel(1), genLabel(2), genLabel(4), new Image(url3)));

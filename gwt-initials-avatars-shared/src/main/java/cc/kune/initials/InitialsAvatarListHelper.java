@@ -27,11 +27,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The Class InitialsHelper.
+ * The Class InitialsAvatarListHelper.
  * 
  * @author vjrj@ourproject.org (Vicente J. Ruiz Jurado)
  */
-public class InitialsHelper {
+public class InitialsAvatarListHelper {
   /**
    * Gets a random int starting from one.
    * 
@@ -45,25 +45,30 @@ public class InitialsHelper {
   }
 
   /**
-   * Gets the four elements, and gets randomly three maintaining the first.
+   * Gets four elements of the list.
    * 
    * @param names
    *          the names
    * @return the four and swap
    */
-  public static List<?> getFour(final List<?> names) {
+  public static <V> List<V> getFour(final List<V> names) {
     return names.subList(0, getMaxSize(names));
   }
 
   /**
-   * Gets the four elements, and gets randomly three maintaining the first.
+   * With lists of more than four elements, gets only four elements, and gets
+   * randomly three maintaining the first (the author).
    * 
    * @param objects
    *          the names
    * @return the four and swap
    */
-  public static List<?> getFourAndSwap(final List<?> objects) {
-    return swap(objects).subList(0, getMaxSize(objects));
+  public static <V> List<V> getFourAndSwap(final List<V> objects) {
+    if (objects.size() > 4) {
+      return swap(objects).subList(0, getMaxSize(objects));
+    } else {
+      return objects;
+    }
   }
 
   public static int getMaxSize(final List<?> list) {
@@ -73,11 +78,13 @@ public class InitialsHelper {
   /**
    * Swap the last three elements of a list.
    * 
+   * @param <V>
+   * 
    * @param list
    *          the list
    * @return the list
    */
-  private static List<?> swap(final List<?> list) {
+  private static <V> List<V> swap(final List<V> list) {
     // We maintain the first in the first position
     for (int index = 1; index < list.size(); index++) {
       Collections.swap(list, index, getARandom(list.size()));

@@ -26,6 +26,7 @@ package cc.kune.initials;
 import static com.google.gwt.dom.client.Style.Unit.PX;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.Composite;
@@ -71,12 +72,12 @@ public class AvatarComposite extends Composite {
     }
 
     public AvatarComposite build(final IsWidget... widgets) {
-      return build(Arrays.asList(widgets));
+      return build(new LinkedList<IsWidget>(Arrays.asList(widgets)));
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public AvatarComposite build(final List<IsWidget> widgets) {
-      final List list = InitialsHelper.getFour(widgets);
+    public AvatarComposite build(final LinkedList<IsWidget> widgets) {
+      final List list = InitialsAvatarListHelper.getFour(widgets);
       return new AvatarComposite(this, avatarSizes[list.size() - 1], fontSizes[list.size() - 1], list);
     }
 

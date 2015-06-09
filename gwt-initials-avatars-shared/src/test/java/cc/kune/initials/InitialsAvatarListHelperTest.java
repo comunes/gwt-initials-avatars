@@ -32,7 +32,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-public class InitialsHelperTest {
+public class InitialsAvatarListHelperTest {
 
   @Before
   public void before() {
@@ -49,18 +49,22 @@ public class InitialsHelperTest {
 
   @Test
   public void shouldReturnLessThanFourInOrder() {
-    // @SuppressWarnings();
-    assertEquals(list("abc", "def"), InitialsHelper.getFour(list("abc", "def")));
-    assertEquals(list("abc"), InitialsHelper.getFour(list("abc")));
-    assertEquals(list("abc", "def", "ghi"), InitialsHelper.getFour(list("abc", "def", "ghi")));
+    assertEquals(list("abc", "def"), InitialsAvatarListHelper.getFour(list("abc", "def")));
+    assertEquals(list("abc"), InitialsAvatarListHelper.getFour(list("abc")));
+    assertEquals(list("abc", "def", "ghi"), InitialsAvatarListHelper.getFour(list("abc", "def", "ghi")));
     assertEquals(list("abc", "def", "ghi", "jkl"),
-        InitialsHelper.getFour(list("abc", "def", "ghi", "jkl")));
+        InitialsAvatarListHelper.getFour(list("abc", "def", "ghi", "jkl")));
+  }
+
+  @Test
+  public void shouldReturnLessThanFourSwapInOrder() {
+    assertEquals(list("abc", "def"), InitialsAvatarListHelper.getFourAndSwap(list("abc", "def")));
   }
 
   @Test
   public void shouldReturnMoreThanFourRandomly() {
-    assertEquals(4, InitialsHelper.getFour(list("abc", "def", "ghi", "jkl", "mnñ")).size());
-    assertEquals("abc", InitialsHelper.getFour(list("abc", "def", "ghi", "jkl", "mnñ")).get(0));
+    assertEquals(4, InitialsAvatarListHelper.getFour(list("abc", "def", "ghi", "jkl", "mnñ")).size());
+    assertEquals("abc", InitialsAvatarListHelper.getFour(list("abc", "def", "ghi", "jkl", "mnñ")).get(0));
   }
 
 }

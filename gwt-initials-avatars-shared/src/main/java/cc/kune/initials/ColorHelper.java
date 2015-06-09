@@ -33,7 +33,8 @@ public class ColorHelper {
   public static final int MAX = 200;
 
   /** The MIN color constant. */
-  public static final int MIN = 60;
+
+  public static final int MIN = 80;
 
   /**
    * Gets a random clear color suitable for use in placeholder avatars, using a

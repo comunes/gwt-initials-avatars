@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -9,7 +10,7 @@
   </parent>
 
   <artifactId>gwt-initials-avatars-server</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <prerequisites>
     <maven>${mavenVersion}</maven>
@@ -25,7 +26,6 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>gwt-initials-avatars-client</artifactId>
       <version>${project.version}</version>
-      <type>war</type>
       <scope>runtime</scope>
     </dependency>
     <dependency>
@@ -37,28 +37,28 @@
       <artifactId>javax.servlet-api</artifactId>
     </dependency>
     <dependency>
-    	<groupId>com.google.guava</groupId>
-    	<artifactId>guava</artifactId>
-    	<version>15.0</version>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <version>15.0</version>
     </dependency>
   </dependencies>
   <build>
-     <plugins>
-        <plugin>
-           <groupId>org.apache.maven.plugins</groupId>
-           <artifactId>maven-jar-plugin</artifactId>
-           <version>2.4</version>
-           <executions>
-              <execution>
-                 <id>make-a-jar</id>
-                 <phase>compile</phase>
-                 <goals>
-                    <goal>jar</goal>
-                 </goals>
-              </execution>
-           </executions>
-        </plugin>
-     </plugins>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <id>make-a-jar</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
   <profiles>
     <profile>
@@ -77,7 +77,8 @@
               <configuration>
                 <scanIntervalSeconds>1</scanIntervalSeconds>
                 <webApp>
-                  <baseResource implementation="org.eclipse.jetty.util.resource.ResourceCollection">
+                  <baseResource
+                    implementation="org.eclipse.jetty.util.resource.ResourceCollection">
                     <resourcesAsCSV>src/main/webapp,${basedir}/../gwt-initials-avatars-client/target/gwt-initials-avatars-client-${project.version}/</resourcesAsCSV>
                   </baseResource>
                   <extraClasspath>${basedir}/../gwt-initials-avatars-shared/target/classes/</extraClasspath>
